@@ -1,0 +1,41 @@
+#%RAML 1.0
+baseUri: https://anypoint.mulesoft.com/mocking/api/v1/links/fdd14075-fe7c-4ca4-816b-c72911ec7555
+title: multiple-resource-1
+
+types:
+  firstType: !include schemas/newsDataType.raml
+
+/search:
+  get:
+    queryParameters:
+      keyword:
+        type: string
+        required: true
+        minLength: 3
+        maxLength: 10
+    responses:
+      200:
+        body:
+          application/json:
+            example: !include examples/searchExample.raml
+              
+/news:
+  post:
+    queryParameters:
+      country:
+        required: false
+    body:
+      application/json:
+        type: !include schemas/newsDataType.raml
+    responses:
+      201:
+        body:
+          application/json:
+            example:
+              {"Indian news" : "Breaking news...."}
+
+/sportsNews:
+  put:
+    body:
+      application/json:
+        type: firstType []

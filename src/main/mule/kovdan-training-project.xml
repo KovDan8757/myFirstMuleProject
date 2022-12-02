@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="68d0d585-c34f-46ef-bb02-2018570471ff" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="kovdan-training-projectFlow" doc:id="9f4a50e9-b0ba-4d5f-8b50-a51afd0f47f8" >
+		<http:listener doc:name="Listener" doc:id="577292e1-ab93-445e-82e8-de90f2d6e226" config-ref="HTTP_Listener_config" path="/test"/>
+		<set-payload value='#["Hello Wold"]' doc:name="Set Payload" doc:id="33dfa35c-bdaa-43b3-b4a7-6a210e38cf57" />
+	</flow>
+	<flow name="kovdan-training-projectFlow1" doc:id="5337e986-c815-47cd-81de-86274dbe0661" >
+		<http:listener doc:name="Listener" doc:id="ac60c98c-d698-4bf9-8d52-a8009f01fc11" config-ref="HTTP_Listener_config" path="/sport"/>
+		<set-payload value='#["Hello Daniel, do it. "]' doc:name="Set Payload" doc:id="c068d112-c937-4b2d-8fbb-edb7ef47c017" />
+	</flow>
+</mule>
