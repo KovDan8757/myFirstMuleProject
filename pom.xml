@@ -27,6 +27,9 @@
 			<plugin>
 				<groupId>org.mule.tools.maven</groupId>
 				<artifactId>mule-maven-plugin</artifactId>
+			<plugin>
+				<groupId>org.mule.tools.maven</groupId>
+				<artifactId>mule-maven-plugin</artifactId>
 				<version>${mule.maven.plugin.version}</version>
 				<extensions>true</extensions>
 				<!-- Added becouse of MuleSoft deployment, deploy to AnyPoint platform -->
@@ -37,14 +40,14 @@
 						<username>${anypoint.username}</username>
 						<password>${anypoint.password}</password>
 						
-						<environment>${env}</environment>
-						<applicationName>${appname}</applicationName>
+						<environment>Sandbox</environment>
+						<applicationName>${project.artifactId}</applicationName>
 						<businessGroup>${business}</businessGroup>
-						<workerType>${vCore}</workerType>
-						<workers>${workers}</workers>
+						<workerType>${workerType}</workerType>
+						<workers>1</workers>
 						<objectStoreV2>true</objectStoreV2>
+						<region>${region}</region>
 					</cloudHubDeployment>
-				<classifier>mule-application</classifier>
 				</configuration>
 				<!-- Added becouse of MuleSoft deployment, deploy to AnyPoint platform -->
 			</plugin>
