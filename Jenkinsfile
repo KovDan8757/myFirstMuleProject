@@ -10,6 +10,7 @@ pipeline {
         stage('Build Application') {
             steps {
                 sh 'mvn clean install'
+                sh 'mvn dependency:purge-local-repository -DmanualInclude="org.mule.tools.maven:mule-app-maven-plugin:1.7"'
             }
         }
 
